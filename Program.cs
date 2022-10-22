@@ -1,44 +1,35 @@
-﻿//The Verification work
+//The Verification work
 
 Console.Clear();
 
-// int SetSizeArray() // set size array
-// {
-//     Console.WriteLine("Задайте размер массива, с значением больше 5 элементов");
-//     int size = Convert.ToInt32(Console.ReadLine());
-//     while (size<=4)
-//     {
-//         Console.WriteLine("Вы ввели неверное значение (4 или меньше), пожалуйста, повторите ввод:");
-//         size = Convert.ToInt32(Console.ReadLine());
-//         Console.WriteLine();
-//     }
-//     return size;
-// }
 
-char[] mixedArray = Convert.ToChar("Ал0е3к2с32андр23 Пу465шкин на7ча7л пи7с7а7ть");
+Console.Write("Enter length array:");
+int sizeArray = Convert.ToInt32(Console.ReadLine());
 
-// char[] newStrArray = new char[];
-// int k = 0;
-foreach (int v in mixedArray)
+string[] mixedArray = new string[sizeArray];
+
+for (int i = 0; i < sizeArray; i++)
 {
-    if (mixedArray[v] == 0)
-    {
-        Console.WriteLine(mixedArray[v]);
-       
-    }
+    Console.Write($"Enter {i + 1} element: ");
+    mixedArray[i] = Console.ReadLine();
 }
 
-// Console.WriteLine(string.Join(newStrArray));
-// string[] NewFillArrayString(int sizeArray)
-// {
-//     string[] newFillArray = new string[sizeArray];
-//     for (int i = 0; i < sizeArray; i++)
-//     {
-//         newFillArray[i] = new Random().Next(0, 1000).ToString();
-//         System.Console.WriteLine(newFillArray[i]);
-//     }
-//     return newFillArray;
-// }
+string newElement = "";
+string[] finalArray = mixedArray;
+int j = 0;
 
-
-
+foreach (string item in mixedArray)
+{
+    for (int i = 0; i < item.Length; i++)
+    {
+        if (item[i] < '0' || item[i] > '9')
+        {
+            newElement += item[i];
+        }
+    }
+    finalArray[j] = newElement;
+    j++;
+    newElement = "";
+}
+Console.WriteLine(String.Join("-", finalArray));
+Console.WriteLine();
